@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>EaselJS. Log Demo (new in 0.6.0)</title>
+	<link href="Iwt2Styles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./Log.js"></script>	
+	
+	<script>
+	var stage;
+	
+	function start() {
+		var Log = createjs.Log;
+		
+		Log.log("By default all errors goes to the console");
+		
+		// Only warnings and errors msgs
+		Log.level = Log.WARNING;
+
+		Log.log("This message is ignored.", "", Log.TRACE);
+		Log.log("This message goes to the console.", "", Log.WARNING);
+		Log.log("This message goes to the console too.", "", Log.ERROR);
+	
+	
+	}
+	</script>
+</head>
+	
+<body onload="start();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Easel<strong>JS. </strong></span>Log Demo (new in 0.6.0) </h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/> 
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 Group</a></p>
+	</header>
+	
+</body>
+</html>

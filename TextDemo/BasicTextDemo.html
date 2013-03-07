@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>EaselJS. Text Demo</title>
+	<link href="Iwt2Styles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>	
+	
+	<script>
+	var myText;
+	var stage;
+
+	function update(event) {
+		myText.x += 1;
+		stage.update();
+	}
+	
+	function start() {
+		myText = new createjs.Text("Text in 20px Arial", "20px Arial", "#ff7700");
+		myText.x = 0;
+		myText.y = 50;
+		
+
+		stage = new createjs.Stage(document.getElementById("testCanvas"));
+		stage.addChild(myText);
+		
+		createjs.Ticker.setFPS (20);
+		createjs.Ticker.addEventListener("tick", update);
+ 	}
+	</script>
+</head>
+	
+<body onload="start();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Easel<strong>JS. </strong></span>Text Demo </h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/> 
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 Group</a></p>
+	</header>
+	
+</body>
+</html>
