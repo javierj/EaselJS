@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>EaselJS. Bitmap Animation with Movement Demo</title>
+	<link href="Iwt2Styles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>	
+	
+	<script>
+	function start() {
+		
+		var data = {
+				images: ["Jacinto.png"],
+				frames: {width:102, height:102},
+				animations: {run: { frames: [1, 2, 3, 4, 5, 6, 5, 4, 0]}}
+		}
+		var spriteSheet = new createjs.SpriteSheet(data);
+		
+		createjs.SpriteSheetUtils.addFlippedFrames(spriteSheet, true, false, false);
+		
+		var animacion = new createjs.BitmapAnimation (spriteSheet);
+		animacion.x = 100;
+		animacion.y = 120;
+		animacion.gotoAndPlay("run"); 
+		
+		var stage = new createjs.Stage(document.getElementById("testCanvas"));
+		stage.addChild(animacion);
+		var vel = 5;
+		
+		function update() {
+			animacion.x += vel;
+			if (animacion.x > 400) {
+				vel = -5;
+				animacion.gotoAndPlay("run_h"); 
+			}
+			if (animacion.x < 112) {
+				vel = 5;
+				animacion.gotoAndPlay("run"); 
+			}
+			stage.update();
+		}
+		
+		createjs.Ticker.setFPS(20);
+		createjs.Ticker.addEventListener("tick",update);
+	}
+	</script>
+</head>
+	
+<body onload="start();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Easel<strong>JS.</strong></span>Bitmap Animation with Movement Demo </h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/>
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 </a></p>
+	</header>
+	
+</body>
+</html>

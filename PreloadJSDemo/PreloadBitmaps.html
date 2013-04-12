@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PreloadJS. Bitmaps Demo</title>
+	<link href="Iwt2Styles.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="http://code.createjs.com/easeljs-0.6.0.min.js"></script>	
+	<script type="text/javascript" src="http://code.createjs.com/preloadjs-0.3.0.min.js"></script>	
+	
+	<script>
+	var queue;
+	var manifest = [
+    		 {id: "Blue", src:"./assets/Blue70.png"},
+    		 {id: "Green", src:"./assets/Green70.png"},
+    		 {id: "Orange", src:"./assets/Orange70.png"},
+ 		];
+
+	function load() {	
+		queue = new createjs.LoadQueue(false);
+		queue.addEventListener("complete", start);
+		queue.loadManifest(manifest);
+	}
+
+	function start() {
+		var stage = new createjs.Stage(document.getElementById("testCanvas"));
+		var x = 10;
+		
+		for (img in manifest) {
+			var imgId = manifest[img].id;
+			var bitmap = new createjs.Bitmap(queue.getResult(imgId));	
+			bitmap.x = x;
+			bitmap.y = 50;
+			x+= 80;
+			stage.addChild(bitmap);
+		}
+		stage.update();
+	}
+	</script>
+</head>
+	
+<body onload="load();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Preload<strong>JS.</strong></span> Bitmaps Demo </h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/>
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 </a></p>
+	</header>
+	
+</body>
+</html>

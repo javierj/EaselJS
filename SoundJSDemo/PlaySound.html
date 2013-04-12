@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PreloadJS. Bitmaps Demo</title>
+	<link href="Iwt2Styles.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="http://code.createjs.com/soundjs-0.4.0.min.js"></script>	
+	
+	<script>
+
+	function start() {
+		createjs.Sound.registerSound("Explosion.wav", "sound");
+		var instance = createjs.Sound.play("sound");		
+		instance.setVolume(0.5);
+	}
+
+	</script>
+</head>
+	
+<body onload="start();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Preload<strong>JS.</strong></span> Bitmaps Demo </h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/>
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 </a></p>
+	</header>
+	
+</body>
+</html>
